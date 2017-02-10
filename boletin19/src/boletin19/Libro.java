@@ -3,6 +3,7 @@ package boletin19;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 
@@ -66,6 +67,30 @@ public class Libro {
     public String toString() {
         return "Libro{" + "titulo=" + titulo + ", autor=" + autor + ", ISBN=" + ISBN + ", precio=" + precio + ", numerounidades=" + numerounidades + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.titulo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Libro other = (Libro) obj;
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
+        return true;
+    }
+
+    
     
     
 }
